@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Space Chicken Shooter</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;600;800&family=Share+Tech+Mono&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <div class="game-container"><canvas id="game" width="800" height="600"></canvas></div>
+  <div class="hud">
+    <div class="hud-card">SCORE <span id="score">0</span></div>
+    <div class="hud-card">LIVES <span id="lives">3</span></div>
+    <div class="hud-card">WAVE <span id="wave">1</span></div>
+    <div class="hud-card">CREDITS <span id="credits">0</span></div>
+  </div>
+  <button class="neon-button home-button" onclick="showHome()">⌂ Home</button>
+  <button class="bomb-button" id="bombButton" onclick="useBomb()">SMART<br>BOMB</button>
+  <div class="resume-countdown" id="resumeCountdown" aria-live="assertive"></div>
+  <div class="wave-intro" id="waveIntro" aria-live="assertive">
+    <div class="wave-intro-name" id="waveIntroName">WAVE 1</div>
+    <div class="wave-intro-countdown" id="waveIntroCountdown"></div>
+  </div>
+  <div class="wave-motivator" id="waveMotivator" aria-live="polite">
+    <div class="motivator-kicker">SECTOR CLEARED</div>
+    <div class="motivator-text" id="motivatorText">The flock feared your fire. Keep pushing!</div>
+  </div>
+
+  <section class="screen home-screen active" id="homeScreen">
+    <div class="game-title">SPACE CHICKEN SHOOTER</div>
+    <div class="subtitle">NEON GALACTIC DEFENSE</div>
+    <div class="menu-actions">
+      <button class="neon-button" onclick="startGame()">Play</button>
+      <button class="neon-button pink" onclick="showShop()">Shop</button>
+    </div>
+  </section>
+
+  <section class="screen shop-screen" id="shopScreen">
+    <div class="shop-panel">
+      <div class="shop-header">
+        <div><small>NEBULA ARMORY</small><h1>Upgrade Shop</h1></div>
+        <div class="shop-header-actions">
+          <div class="balance">CR <span id="shopCredits">0</span></div>
+          <button class="neon-button shop-home-button" onclick="showHome()">⌂ Home</button>
+        </div>
+      </div>
+      <div class="shop-tabs">
+        <button onclick="renderShop('ships')">Ships</button>
+        <button onclick="renderShop('upgrades')">Upgrades</button>
+      </div>
+      <div class="shop-grid" id="shopGrid"></div>
+    </div>
+  </section>
+
+  <section class="screen game-over" id="gameOver">
+    <h1>MISSION FAILED</h1>
+    <p>Final Score: <span id="finalScore">0</span></p>
+    <p>Credits Earned: <span class="balance" id="earnedCredits">0</span></p>
+    <div class="menu-actions">
+      <button class="neon-button" onclick="startGame()">Play Again</button>
+      <button class="neon-button pink" onclick="showHome()">Home</button>
+    </div>
+  </section>
+  <section class="screen pause-screen" id="pauseScreen">
+    <h1>GAME PAUSED</h1>
+    <p>Take a breath, pilot.</p>
+    <div class="menu-actions">
+      <button class="neon-button" onclick="resumeGame()">Resume</button>
+      <button class="neon-button pink" onclick="showHome()">Home</button>
+    </div>
+  </section>
+  <div class="controls">WASD / ARROWS: Move &nbsp;•&nbsp; SPACE: Fire &nbsp;•&nbsp; R: Restart</div>
+  <script src="game.js"></script>
+</body>
+</html>
